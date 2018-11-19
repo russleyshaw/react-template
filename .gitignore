@@ -1,0 +1,10 @@
+# Yarn/NPM
+node_modules/
+
+# Parcel
+dist/
+.cache/
+
+# Others
+*.log
+*~
