@@ -8,7 +8,9 @@
         "semicolon": [true, "always", "strict-bound-class-methods"],
         "arrow-parens": [true, "ban-single-arg-parens"],
         "no-empty-interface": false,
-        "curly": [true, "ignore-same-line"]
+        "curly": [true, "ignore-same-line"],
+        "max-classes-per-file": false,
+        "member-ordering": false
     },
     "rulesDirectory": []
 }
