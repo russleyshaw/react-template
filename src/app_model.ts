@@ -30,6 +30,7 @@ export class AppModel {
     addTodo(): TodoModel {
         const id = this.getNextId();
         const todo = new TodoModel(id, this.input, () => this.deleteTodo(id));
+        this.input = "";
         this.todos.push(todo);
 
         return todo;
@@ -39,7 +40,7 @@ export class AppModel {
         const idx = this.todos.findIndex(t => t.id === id);
         if (idx === -1) return;
 
-        this.todos.splice(idx);
+        this.todos.splice(idx, 1);
     }
 }
 
