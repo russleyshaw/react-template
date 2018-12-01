@@ -12,6 +12,9 @@ before_script:
 script:
     - yarn build
 
+before_deploy:
+    - touch dict/.nojekyll
+
 deploy:
     provider: pages
     skip-cleanup: true
