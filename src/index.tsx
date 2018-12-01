@@ -1,5 +1,4 @@
 import DevTools from "mobx-react-devtools";
-import { configureDevtool } from "mobx-react-devtools";
 import * as React from "react";
 import { render } from "react-dom";
 
@@ -8,16 +7,11 @@ import { AppModel } from "./app_model";
 
 import "./style/index.scss";
 
-configureDevtool({
-    updatesEnabled: true,
-    logFilter: change => change.type === "reaction"
-});
-
 const model = new AppModel();
 
 render(
     <>
-        <DevTools />
+        {process.env.NODE_ENV === "production" ? null : <DevTools />}
         <App model={model} />
     </>,
     document.getElementById("main-app")

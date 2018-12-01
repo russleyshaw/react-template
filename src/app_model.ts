@@ -1,5 +1,4 @@
 import { observable } from "mobx";
-import { noop } from "./util";
 
 export class TodoModel {
     readonly id: number;
