@@ -13,7 +13,7 @@ script:
     - yarn build
 
 before_deploy:
-    - touch dict/.nojekyll
+    - touch dist/.nojekyll
 
 deploy:
     provider: pages
