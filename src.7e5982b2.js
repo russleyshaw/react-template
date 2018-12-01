@@ -35,4 +35,4 @@ var e;!function(t,n){"object"==typeof exports&&"object"==typeof module?module.ex
 },{}],"zo2T":[function(require,module,exports) {
 "use strict";var e=this&&this.__importDefault||function(e){return e&&e.__esModule?e:{default:e}},r=this&&this.__importStar||function(e){if(e&&e.__esModule)return e;var r={};if(null!=e)for(var t in e)Object.hasOwnProperty.call(e,t)&&(r[t]=e[t]);return r.default=e,r};Object.defineProperty(exports,"__esModule",{value:!0});var t=e(require("mobx-react-devtools")),l=r(require("react")),u=require("react-dom"),n=require("./App"),a=require("./app_model");require("./style/index.scss");var i=new a.AppModel;u.render(l.createElement(l.Fragment,null,null,l.createElement(n.App,{model:i})),document.getElementById("main-app"));
 },{"mobx-react-devtools":"5htX","react":"1n8/","react-dom":"NKHc","./App":"/NHn","./app_model":"Fhnn","./style/index.scss":"bjZF"}]},{},["zo2T"], null)
-//# sourceMappingURL=/src.7e5982b2.map
+//# sourceMappingURL=src.7e5982b2.map
