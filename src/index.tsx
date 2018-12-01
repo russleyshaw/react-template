@@ -12,7 +12,7 @@ const model = new AppModel();
 render(
     <>
         {process.env.NODE_ENV === "production" ? null : <DevTools />}
-        <App model={model} />
+        <div>Hello, World</div>
     </>,
     document.getElementById("main-app")
 );
