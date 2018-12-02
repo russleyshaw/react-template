@@ -1,8 +1,11 @@
+import { initializeIcons } from "@uifabric/icons";
 import DevTools from "mobx-react-devtools";
 import * as React from "react";
 import { render } from "react-dom";
 
 import "./style/index.scss";
+
+initializeIcons();
 
 render(
     <>
