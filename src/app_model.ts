@@ -27,12 +27,15 @@ export class AppModel {
         return id;
     }
 
-    addTodo(): TodoModel {
+    addTodo() {
+        const input = this.input.trim();
+        if (input === "") {
+            return;
+        }
         const id = this.getNextId();
-        const todo = new TodoModel(id, this.input, () => this.deleteTodo(id));
+        const todo = new TodoModel(id, input, () => this.deleteTodo(id));
         this.input = "";
         this.todos.push(todo);
-
         return todo;
     }
 
