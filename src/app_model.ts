@@ -36,7 +36,6 @@ export class AppModel {
         const todo = new TodoModel(id, input, () => this.deleteTodo(id));
         this.input = "";
         this.todos.push(todo);
-        return todo;
     }
 
     private deleteTodo(id: number): void {

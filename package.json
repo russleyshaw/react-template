@@ -23,8 +23,8 @@
         "mobx-react": "^5.4.2",
         "mobx-react-devtools": "^6.0.3",
         "office-ui-fabric-react": "^6.109.0",
-        "react": "^16.7.0-alpha.2",
-        "react-dom": "^16.7.0-alpha.2"
+        "react": ">=16.3.2-0 <17.0.0",
+        "react-dom": ">=16.3.2-0 <17.0.0"
     },
     "scripts": {
         "start": "http-server ./dist",

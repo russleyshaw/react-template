@@ -1,4 +1,3 @@
-import { initializeIcons } from "@uifabric/icons";
 import DevTools from "mobx-react-devtools";
 import * as React from "react";
 import { render } from "react-dom";
@@ -6,9 +5,8 @@ import { render } from "react-dom";
 import { App } from "./App";
 import { AppModel } from "./app_model";
 
-import "./style/index.scss";
+import "./style";
 
-initializeIcons();
 const model = new AppModel();
 
 render(

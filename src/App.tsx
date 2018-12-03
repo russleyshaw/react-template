@@ -6,6 +6,8 @@ import * as React from "react";
 import { IAppModelProps } from "./app_model";
 import { TodoListItem } from "./TodoListItem";
 
+const AddIconSubmitButton = () => <IconButton iconProps={{ iconName: "Add" }} primary type="submit" />;
+
 export const App = observer((props: IAppModelProps) => {
     const { model } = props;
     function handleInputChange(e: any, newValue?: string) {
@@ -18,32 +20,32 @@ export const App = observer((props: IAppModelProps) => {
         model.addTodo();
     }
 
+    const unfinished = model.todos.filter(t => !t.done);
+
+    const finished = model.todos.filter(t => t.done);
+
     return (
-        <div className="flex-col flex-item-stretch" style={{ padding: 16, margin: 16, border: "1px black solid" }}>
-            <Label>New Todo:</Label>
-            <form className="flex-row flex-center flex-item-stretch" onSubmit={handleAddTodo}>
-                <TextField
-                    className="flex-item-stretch"
-                    onChange={handleInputChange}
-                    value={model.input}
-                    placeholder="Enter New Todo"
-                />
-                <IconButton iconProps={{ iconName: "Add" }} type="submit">
-                    Add
-                </IconButton>
-            </form>
-            <Label>To-Do</Label>
-            {model.todos
-                .filter(t => !t.done)
-                .map(todo => (
+        <div className="flex-row flex-justify-center">
+            <div className="flex-col" style={{ padding: 16, margin: 16, border: "1px black solid", flexBasis: 500 }}>
+                <Label>New Todo:</Label>
+                <form className="flex-row flex-align-center flex-item-stretch" onSubmit={handleAddTodo}>
+                    <TextField
+                        className="flex-item-stretch"
+                        onChange={handleInputChange}
+                        value={model.input}
+                        placeholder="Enter New Todo"
+                    />
+                    <AddIconSubmitButton />
+                </form>
+                {unfinished.length === 0 ? null : <Label>Unfinished</Label>}
+                {unfinished.map(todo => (
                     <TodoListItem key={todo.id} model={todo} />
                 ))}
-            <Label>Done</Label>
-            {model.todos
-                .filter(t => t.done)
-                .map(todo => (
+                {finished.length === 0 ? null : <Label hidden={finished.length === 0}>Finished</Label>}
+                {finished.map(todo => (
                     <TodoListItem key={todo.id} model={todo} />
                 ))}
+            </div>
         </div>
     );
 });
