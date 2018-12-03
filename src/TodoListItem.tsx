@@ -1,6 +1,5 @@
 import { observer } from "mobx-react";
 import { IconButton } from "office-ui-fabric-react/lib/Button";
-import {} from "office-ui-fabric-react/lib/PersonaCoin";
 import { Toggle } from "office-ui-fabric-react/lib/Toggle";
 import * as React from "react";
 import { TodoModel } from "./app_model";
@@ -22,7 +21,7 @@ export const TodoListItem = observer((props: ITodoListItemProps) => {
         <div className="flex-row flex-align-baseline">
             <Toggle checked={model.done} onChange={model.toggle} />
             <div style={{ marginLeft: 8 }} />
-            <span>{model.text}</span>
+            <p>{model.text}</p>
             <div className="flex-item-stretch" />
             <TrashIconButton onClick={model.delete} />
         </div>

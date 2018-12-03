@@ -33,7 +33,7 @@ export const App = observer((props: IAppModelProps) => {
                         className="flex-item-stretch"
                         onChange={handleInputChange}
                         value={model.input}
-                        placeholder="Enter New Todo"
+                        placeholder={model.placeholder}
                     />
                     <AddIconSubmitButton />
                 </form>

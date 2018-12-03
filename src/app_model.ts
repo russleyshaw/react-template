@@ -1,4 +1,5 @@
 import { observable } from "mobx";
+import { randomChoice } from "./random";
 
 export class TodoModel {
     readonly id: number;
@@ -16,10 +17,31 @@ export class TodoModel {
     };
 }
 
+const PLACEHOLDERS = [
+    "Check the mail",
+    "Wash the dishes",
+    "Walk the dog",
+    "Join the Kwiwk discord",
+    "Add Russley on KeyBase",
+    "Switch to Duck Duck Go",
+    "Switch to Firefox",
+    "Install 1.1.1.1 on Android",
+    "Pass out",
+    "Learn TypeScript",
+    "Complain about TypeScript"
+];
+
 export class AppModel {
     @observable todos: TodoModel[] = [];
     @observable input: string = "";
+    @observable placeholder = randomChoice(PLACEHOLDERS);
     private nextId = 1;
+
+    constructor() {
+        setInterval(() => {
+            this.placeholder = randomChoice(PLACEHOLDERS);
+        }, 5000);
+    }
 
     private getNextId() {
         const id = this.nextId;
