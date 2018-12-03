@@ -18,6 +18,7 @@
         "typescript": "^3.1.6"
     },
     "dependencies": {
+        "@uifabric/icons": "^6.3.0",
         "mobx": "^5.6.0",
         "mobx-react": "^5.4.2",
         "mobx-react-devtools": "^6.0.3",
