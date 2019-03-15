@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
-    "repository": "git@github.com:russleyshaw/swatch-web.git",
+    "repository": "git@github.com:russleyshaw/react-template.git",
     "author": "Russley Shaw <russleyshaw@gmail.com>",
     "license": "MIT",
     "devDependencies": {
