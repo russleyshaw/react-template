@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 
-.flex-item-stretch {
+.flex-stretch {
     flex: 1 1 auto;
 }
 
@@ -18,8 +18,4 @@
 
 .flex-align-center {
     align-items: center;
-}
-
-.flex-align-baseline {
-    align-items: baseline;
 }
