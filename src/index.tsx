@@ -1,13 +1,15 @@
-import DevTools from "mobx-react-devtools";
-import * as React from "react";
-import { render } from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider, CssBaseline } from "@material-ui/core";
+import App from "./app";
+import createTheme from "./theme";
 
-import "./style";
+const theme = createTheme();
 
-render(
-    <>
-        {process.env.NODE_ENV === "production" ? null : <DevTools />}
-        <div>Hello, World</div>
-    </>,
-    document.getElementById("main-app")
+ReactDOM.render(
+    <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+    </ThemeProvider>,
+    document.getElementById("root")
 );

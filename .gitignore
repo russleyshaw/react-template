@@ -1,10 +1,7 @@
-# Yarn/NPM
+.env
 node_modules/
-
-# Parcel
 dist/
-.cache/
-
-# Others
+build/
 *.log
-*~
+.cache/
+.vscode/
