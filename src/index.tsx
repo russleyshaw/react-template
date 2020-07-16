@@ -1,15 +1,11 @@
+import "react-hot-loader";
+
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider, CssBaseline } from "@material-ui/core";
-import App from "./app";
-import createTheme from "./theme";
 
-const theme = createTheme();
+import RootView from "./views/RootView";
 
-ReactDOM.render(
-    <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
-    </ThemeProvider>,
-    document.getElementById("root")
-);
+ReactDOM.render(<RootView />, document.getElementById("root"));

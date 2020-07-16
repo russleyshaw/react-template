@@ -1,26 +1,33 @@
 module.exports = {
     root: true,
     parser: "@typescript-eslint/parser",
+    parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ["./tsconfig.json"],
+        ecmaFeatures: {
+            jsx: true,
+        },
+    },
+    env: {
+        browser: true,
+        node: true,
+    },
     plugins: ["@typescript-eslint"],
     extends: [
         "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "prettier/@typescript-eslint",
-        "plugin:react/recommended"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:react/recommended",
     ],
-    parserOptions: {
-        ecmaFeatures: {
-            jsx: true
-        }
-    },
-
     rules: {
-        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/no-use-before-define.md
-        "@typescript-eslint/no-use-before-define": ["error", { functions: false }],
-
-        // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/camelcase.md
-        camelcase: "off",
-        "@typescript-eslint/camelcase": ["error", { properties: "never" }]
-    }
+        "@typescript-eslint/no-inferrable-types": [
+            "warn",
+            {
+                ignoreParameters: true,
+                ignoreProperties: true,
+            },
+        ],
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/no-use-before-define": ["error", { functions: false, classes: false }],
+    },
 };
