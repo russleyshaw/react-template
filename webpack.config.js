@@ -1,15 +1,15 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerPlugin = require("fork-ts-checker-webpack-plugin");
-const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const path = require("path");
 
 module.exports = (_, args) => {
     const mode = args.mode || "development";
     const isDevMode = mode === "development";
-    const publicPath = process.env.PUBLIC_PATH ?? "/";
+    const publicPath = process.env.PUBLIC_PATH || "/";
 
     console.log("Mode: ", mode);
     console.log("Public Path: ", publicPath);
@@ -18,31 +18,21 @@ module.exports = (_, args) => {
         new HtmlWebpackPlugin({ template: "./src/index.html" }),
         new ForkTsCheckerPlugin(),
         new MiniCssExtractPlugin(),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    ];
+        new webpack.EnvironmentPlugin({
+            "process.env.NODE_ENV": JSON.stringify(isDevMode ? "development" : "production"),
+            "process.env.DEBUG": JSON.stringify(isDevMode),
+        }),
+        isDevMode && new webpack.HotModuleReplacementPlugin(),
+        isDevMode && new ReactRefreshWebpackPlugin(),
+    ].filter(Boolean);
 
+    const devtool = isDevMode ? "eval" : undefined;
     const alias = {};
     const optimization = {
         splitChunks: {
             chunks: "all",
         },
     };
-
-    if (isDevMode) {
-        plugins.push(
-            new BundleAnalyzerPlugin({
-                openAnalyzer: false,
-            })
-        );
-        alias["react-dom"] = "@hot-loader/react-dom";
-    } else {
-        plugins.push(
-            new BundleAnalyzerPlugin({
-                analyzerMode: "static",
-                openAnalyzer: false,
-            })
-        );
-    }
 
     return {
         mode,
@@ -56,9 +46,12 @@ module.exports = (_, args) => {
                     test: /\.(j|t)sx?$/,
                     exclude: /node_modules/,
                     use: {
-                        loader: "babel-loader",
+                        loader: require.resolve("babel-loader"),
                         options: {
                             cacheDirectory: true,
+                            plugins: [isDevMode && require.resolve("react-refresh/babel")].filter(
+                                Boolean
+                            ),
                         },
                     },
                 },
@@ -102,7 +95,7 @@ module.exports = (_, args) => {
                 },
             ],
         },
-        devtool: isDevMode ? "eval-source-map" : "none",
+        devtool,
         resolve: {
             extensions: [".tsx", ".ts", ".js"],
             alias,
